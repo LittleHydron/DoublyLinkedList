@@ -82,4 +82,11 @@ class DoublyLinkedList:
             node = node.child
 
     def clear(self):
-        self.head = None
+        while self.tail is not None:
+            if self.tail.parent is None:
+                self.tail, self.head = None, None
+            else:
+                tmp = self.tail.parent
+                self.tail.parent = None
+                self.tail = tmp
+                self.tail.child = None
