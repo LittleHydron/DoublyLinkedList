@@ -1,5 +1,5 @@
-from LinkedList import DoublyLinkedList
-from Transistor import Transistor
+from linked_list import DoublyLinkedList
+from transistor import Transistor
 
 
 lst = DoublyLinkedList()
