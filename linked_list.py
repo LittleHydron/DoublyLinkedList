@@ -40,3 +40,46 @@ class DoublyLinkedList:
             if node.content.mark == mark:
                 print(node.content)
             node = node.child
+
+    def find_by_key(self, key) -> bool:
+        node = self.head
+        while node is not None:
+            if node.content == key:
+                return True
+            node = node.child
+        return False
+
+    def pop_back(self) -> None:
+        if self.tail is not None:
+            self.tail = self.tail.parent
+            self.tail.child = None
+            if self.head.child is None:
+                self.head = None
+
+    def pop_front(self) -> None:
+        if self.head is not None:
+            self.head = self.head.child
+            self.head.parent = None
+            if self.tail.parent is None:
+                self.tail = None
+
+    def delete_by_key(self, key) -> None:
+        if self.head is None:
+            return
+        if self.head.content == key:
+            self.pop_front()
+            return
+        if self.tail.content == key:
+            self.pop_back()
+            return
+
+        node = self.head
+        while node.child is not None:
+            if node.content == key:
+                node.child.parent = node.parent
+                node.parent.child = node.child
+                return
+            node = node.child
+
+    def clear(self):
+        self.head = None

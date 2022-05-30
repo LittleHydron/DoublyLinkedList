@@ -13,3 +13,7 @@ class Transistor:
 
     def __gt__(self, other) -> bool:
         return other < self
+
+    def __eq__(self, other):
+        return self.type == other.type and self.mark == other.mark \
+               and self.i_max == other.i_max and self.u_max == other.u_max
